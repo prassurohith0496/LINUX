@@ -1,2 +1,138 @@
 Decision Making:
 ================
+- we will understand shell decision-making in Unix. While writing a shell script, there may be a situation when you need to adopt one path out of the given two paths. So you need to make use of conditional statements that allow your program to make correct 
+  decisions and perform the right actions.- 
+- Unix Shell supports conditional statements which are used to perform different actions based on different conditions. We will now understand two decision-making statements here −
+
+ The if...else statement
+ The case...esac statement
+ 
+ 1.The if...else statements:
+ -----------------------------
+If else statements are useful decision-making statements which can be used to select an option from a given set of options.
+
+Unix Shell supports following forms of if…else statement −
+
+- if...fi statement
+- if...else...fi statement
+- if...elif...else...fi statement
+
+Example:
+---------
+Syntax:
+---------
+if [ <some test> ]
+then
+<commands>
+fi
+------------------------------
+#!/bin/bash
+# Basic if statement
+if [ $1 -gt 100 ]
+then
+echo Hey that\'s a large number.
+pwd
+fi
+date
+
+Example 2: Nested if statements.
+-----------
+#!/bin/bash
+# Nested if statements
+if [ $1 -gt 100 ]
+then
+echo Hey that\'s a large number.
+if (( $1 % 2 == 0 ))
+then
+echo And is also an even number.
+fi
+fi
+
+Example 3: if then else
+----------
+#!/bin/bash
+# else example
+if [ $# -eq 1 ]
+then
+nl $1
+else
+nl /dev/stdin
+fi
+
+Example 4: If Elif Else
+------------
+#!/bin/bash
+# elif statements
+if [ $1 -ge 18 ]
+then
+echo You may go to the party.
+elif [ $2 == 'yes' ]
+then
+echo You may go to the party but be back before midnight.
+else
+echo You may not go to the party.
+fi
+
+Example 5: using if and operators
+------------
+#!/bin/bash
+# and example
+if [ -r $1 ] && [ -s $1 ]
+then
+echo This file is useful.
+fi
+
+#!/bin/bash
+# or example
+if [ $USER == 'bob' ] || [ $USER == 'andy' ]
+then
+ls -alh
+else
+ls
+fi
+
+Case Statements:
+-----------------
+- Sometimes we may wish to take different paths based upon a variable matching a series of patterns.
+  We could use a series of if and elif statements but that would soon grow to be unweildly
+
+Examples:
+----------
+#!/bin/bash
+# case example
+case $1 in
+start)
+echo starting
+;;
+stop)
+echo stoping
+;;
+restart)
+echo restarting
+;;
+*)
+echo don\'t know
+;;
+esac
+---------------------
+#!/bin/bash
+# Print a message about disk useage.
+space_free=$( df -h | awk '{ print $5 }' | sort -n | tail -n 1 | sed 's/%//' )
+case $space_free in
+[1-5]*)
+echo Plenty of disk space available
+;;
+[6-7]*)
+echo There could be a problem in the near future
+;;
+8*)
+echo Maybe we should look at clearing out old files
+;;
+9*)
+echo We could have a serious problem on our hands soon
+;;
+*)
+echo Something is not quite right here
+;;
+esac
+
