@@ -1,0 +1,113 @@
+Shell Scripting:
+=================
+
+1.Introduction:
+----------------
+- A shell script is a computer program designed to be run by the Unix/Linux shell which could be one of the following:
+. The Bourne Shell
+. The C Shell
+. The Korn Shell
+. The GNU Bourne-Again Shell
+
+- Shell scripts have several required constructs that tell the shell environment what to do and when to do it. Of course, 
+  most scripts are more complex than the above one.
+
+Example Script:
+----------------- 
+#!/bin/sh
+
+# Author : Zara Ali
+# Copyright (c) Tutorialspoint.com
+# Script follows here:
+
+echo "What is your name?"
+read PERSON
+echo "Hello, $PERSON"
+
+Here is a sample run of the script −
+
+$./test.sh
+What is your name?
+Zara Ali
+Hello, Zara Ali
+$
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2. What is Shell Scripting:
+----------------------------
+- A Shell provides you with an interface to the Unix system. It gathers input from you and executes programs based on that input. 
+  When a program finishes executing, it displays that program's output.
+
+2.1. Shell Types:
+-------------------
+In Unix, there are two major types of shells −
+
+Bourne shell − If you are using a Bourne-type shell, the $ character is the default prompt.
+C shell − If you are using a C-type shell, the % character is the default prompt.
+
+The Bourne Shell has the following subcategories −
+Bourne shell (sh)
+Korn shell (ksh)
+Bourne Again shell (bash)
+POSIX shell (sh)
+The different C-type shells follow −
+
+C shell (csh)
+TENEX/TOPS C shell (tcsh)
+
+2.2. Shell Scripts:
+--------------------
+The basic concept of a shell script is a list of commands, which are listed in the order of execution. A good shell script will have comments, 
+preceded by # sign, describing the steps.
+
+Example:
+--------
+- Assume we create a "test.sh" script. Note all the scripts would have the ".sh "extension. 
+- Before you add anything else to your script, you need to alert the system that a shell script is being started. This is done using the shebang construct. 
+
+" #!/bin/sh "
+#- hash
+!- bang
+ 
+2.3. Shell Comments : below example explains shell script
+------------------------
+vi first-script.sh
+
+#!/bin/bash
+
+# Author : Zara Ali
+# Copyright (c) Tutorialspoint.com
+# Script follows here:
+pwd
+ls
+
+Save the above content and make the script executable 
+
+# chmod +x test.sh
+
+The shell script is now ready to be executed −
+
+# ./test.sh
+
+Example:
+--------
+#!/bin/sh
+
+# Author : Zara Ali
+# Copyright (c) Tutorialspoint.com
+# Script follows here:
+
+echo "What is your name?"
+read PERSON
+echo "Hello, $PERSON"
+
+Here is a sample run of the script −
+
+$./test.sh
+What is your name?
+Zara Ali
+Hello, Zara Ali
+$
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
