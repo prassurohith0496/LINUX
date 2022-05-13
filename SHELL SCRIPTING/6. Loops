@@ -1,0 +1,201 @@
+LOOPS:
+=======
+- Bash loops are very useful.
+- Loops allow us to take a series of commands and keep re-running them until a particular situation is reached. 
+  They are useful for automating repetitive tasks
+here are 3 basic loop structures in Bash scripting which we'll look at below:
+
+1.While Loops:
+--------------
+- One of the easiest loops to work with is while loops. They say, while an expression is true, keep executing these lines of code. 
+  They have the following format:
+
+Syntax:
+--------
+while [ <some test> ]
+do
+<commands>
+done
+
+Example:
+--------
+#!/bin/bash
+# Basic while loop
+counter=1
+while [ $counter -le 10 ]
+do
+echo $counter
+((counter++))
+done
+echo All done
+
+2. Until Loops:
+-----------------
+- The until loop is fairly similar to the while loop. The difference is that it will execute the commands within it until the test becomes true.
+Syntax:
+-------
+until [ <some test> ]
+do
+<commands>
+done
+
+Example:
+--------
+#!/bin/bash
+# Basic until loop
+counter=1
+until [ $counter -gt 10 ]
+do
+echo $counter
+((counter++))
+done
+echo All done
+
+3.For Loops:
+------------
+- The for loop is a little bit different to the previous two loops. What it does is say for each of the items in a given list,
+  perform the given set of commands. It has the following syntax.
+
+Syntax:
+-------
+for var in <list>
+do
+<commands>
+done
+
+- The for loop will take each item in the list (in order, one after the other), assign that item as the value of the variable var, execute the commands between do and done then go back to the top, grab the next item in the list and repeat over.
+
+Example:
+---------
+#!/bin/bash
+# Basic for loop
+names='Stan Kyle Cartman'
+for name in $names
+do
+echo $name
+done
+echo All done
+
+Ranges
+-------
+We can also process a series of numbers
+
+#!/bin/bash
+# Basic range in for loop
+for value in {1..5}
+do
+echo $value
+done
+echo All done
+-----------------------
+#!/bin/bash
+# Basic range with steps for loop
+for value in {10..0..2}
+do
+echo $value
+done
+----------------------
+#!/bin/bash
+# Make a php copy of any html files
+for value in $1/*.html
+do
+cp $value $1/$( basename -s .html $value ).php
+done
+
+----------------------------------
+4. Controlling Loops: Break and Continue:
+-------------------------------------------
+- Most of the time your loops are going to through in a smooth and ordely manner. Sometimes however we may need to intervene 
+  and alter their running slightly. There are two statements we may issue to do this
+
+Break:
+-------
+The break statement tells Bash to leave the loop straight away.
+It may be that there is a normal situation that should cause the loop to end but there are also exceptional situations in which it should end as well.
+For instance, maybe we are copying files but if the free disk space get's below a certain level we should stop copying.
+
+#!/bin/bash
+# Make a backup set of files
+for value in $1/*
+do
+used=$( df $1 | tail -1 | awk '{ print $5 }' | sed 's/%//' )
+if [ $used -gt 90 ]
+then
+echo Low disk space 1>&2
+break
+fi
+cp $value $1/backup/
+done
+
+Continue:
+-------------
+- The continue statement tells Bash to stop running through this iteration of the loop and begin the next iteration
+- Sometimes there are circumstances that stop us from going any further. 
+- For instance, maybe we are using the loop to process a series of files but if we happen upon a file which we don't have the read permission 
+  for we should not try to process it.
+
+Ex:
+----
+#!/bin/bash
+# Make a backup set of files
+for value in $1/*
+do
+if [ ! -r $value ]
+then
+echo $value not readable 1>&2
+continue
+fi
+cp $value $1/backup/
+done
+
+
+3, Select:
+----------
+- The select mechanism allows you to create a simple menu system. It has the following format:
+
+select var in <list>
+do
+<commands>
+done
+#!/bin/bash
+# A simple menu system
+names='Kyle Cartman Stan Quit'
+PS3='Select character: '
+select name in $names
+do
+if [ $name == 'Quit' ]
+then
+break
+fi
+echo Hello $name
+done
+echo Bye
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
