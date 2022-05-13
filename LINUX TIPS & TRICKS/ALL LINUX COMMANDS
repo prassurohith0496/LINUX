@@ -1,0 +1,2269 @@
+ALL IMPORTANT LINUX COMMANDS:
+-------------------------------
+1.TO KNOW ABOUT LINUX & DEVICES IN A LINUX SERVER:
+-----------------------------------------------------
+#cat /etc/os-release
+
+#lsb_release -a
+
+#uname -r 
+
+#hostnamectl
+
+#cat /proc/version
+
+#cat /etc/issue
+
+#systemd-analyze ------------------------>To know how much time system takes to boot.
+
+#sytemd-analyze   blame ----------------->To know how much time it takes to boot for each and every process.
+
+#uptime  -------------------------------->In Linux uptime command shows since how long your system is running and the number of users are currently logged in and also displays load average for 1,5 and 15 minutes intervals.
+#uptime -V------------------------------->check with time
+
+WC:WORD COUNT COMMAND:
+------------------------
+wc -l : Prints the number of lines in a file.
+wc -w : prints the number of words in a file.
+wc -c : Displays the count of bytes in a file.
+wc -m : prints the count of characters from a file.
+wc -L : prints only the length of the longest line in a file.
+
+WILDCARDS:
+---------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+2.
+Find out whether your system is a physical or virtual machine:
+--------------------------------------------------------------
+#sudo dmidecode -s system-manufacturer
+
+if it is a physical system, you will get an output something like below.
+
+# Dell Inc.
+
+If it is virtual system, you will get the following outputs:
+
+# innotek GmbH
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+3.
+
+HOSTNAME COMMANDS:
+------------------
+#hostname
+
+#hostname -i  ---> will give along with ip addresses
+
+#hostnamectl get-hostname
+
+#hostnamectl set-hostname  mylinux
+
+#cat /etc/hostname.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+3.
+DISK USAGE COMMANDS: (DU)
+---------------------------
+The Linux “du” (Disk Usage) used to check the information of disk usage of files and directories on a machine.
+
+# du  /home/tecmint    -----To find out the disk usage summary of a /home/tecmint directory tree and each of its sub directories.
+
+#du -h /home/tecmint   -----> with human redable format
+
+#du -sh /home/tecmint  ------To get the summary of a grand total disk usage size of an directory use the option “-s”
+
+#du -a /home/tecmint   ------Using “-a” flag with “du” command displays the disk usage of all the files and directories.
+
+#du -ah /home/tecmint  ------Using “-a” flag along with “-h” displays disk usage of all files and folders in human readeable format. 
+
+#du -k /home/tecmint   ------with kilo bytes
+
+#du -ch /home/tecmint   ------The “-c” flag provides a grand total usage disk space at the last line. 
+
+#du -ah --exclude="*.txt" /home/tecmint    ----------The below command calculates and displays the disk usage of all files and directories, but excludes the files that matches given pattern. The below command excludes the “.txt” files
+
+#du -ha --time /home/tecmint  -------------Display the disk usage based on modification of time, use the flag “–time” as shown below
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+4.
+
+DF COMMAND USED TO CHECK DISK SPACE IN LINUX:
+---------------------------------------------
+
+#df  ---- Check File System Disk Space Usage
+
+#df -a -----Display Information of all File System Disk Space Usage.
+
+#df -h  ----Show Disk Space Usage in Human Readable Format
+
+#df -hT /home   ----------Display Information of /home File System
+
+# df -m   ----------------To display information of all file system usage in MB (Mega Byte) 
+
+# df -h   ---------------To display information of all file system statistics in GB (Gigabyte)
+
+#df -i    --------------Display File System Inodes
+
+#df -T    -------------- Display File System Type
+
+#df -t ext3 -----------If you want to display certain file system type use the ‘-t‘ 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+5.
+SWITCH USER COMMAND OR SUDO COMMANDS:
+-------------------------------------
+
+#su - rohith   ----------------To Switch User
+
+#su    -------------It will change to sudo user
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+6.
+WHO COMMANDS:
+-------------
+
+# who   --------------------it will give you the logged in user details on a system
+
+#who -H --------------------To print the heading of the columns displayed
+
+#who -q  ------------ To print the login names and total number of logged on users
+
+#who -m  -------------- In case you want to show only hostname 
+
+# who -T --------------Next, to add user’s message status 
+
+# who -b  -------------To view the time of last system boot,
+
+# who -r -------------You can check the current runlevel with the -r option.
+
+#whoami - print effective userid
+
+#w --------------------->it will show the users logged into the server.
+
+#users ----------------->will show current users logged in
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+7.
+TOUCH: To Create files
+------------------------
+
+#touch  file1  ------------------------To create a file.
+
+#touch file1 file2 file3    -----------To create multiple files at one time.
+
+# touch -c -t YYDDHHMM leena  ---------To create a file with date
+
+# touch -c -t 12101730 leena  --------sets the access and modification date and time to a file leena as 17:30 (17:30 p.m.) December 10 of the current year (2012).
+
+#touch -r leena meena  ---------------will update the time-stamp of file meena with the time-stamp of leena file. So, both the file holds the same time stamp.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+8.
+MKDIR: To make Directories:
+---------------------------
+
+# mkdir  To create Directory
+
+# mkdir -m a=rwx mydir    ---------To create directory with permissions.
+
+# mkdir -p /home/test/test1/test2/test3/test4   -----------How to create several subdirectories at one time:
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+9.
+CAT COMMANDS: To view the content in a file:
+--------------------------------------------
+
+#cat /etc/passwd   ----------Display Contents of File
+
+#cat test test1  --------View Contents of Multiple Files in terminl
+
+# cat >test2  ----------------To Create a file1
+
+# cat song.txt | more
+# cat song.txt | less
+# cat -n song.txt  ---To set line numbers.
+
+#cat test; cat test1; cat test2  ----------Display Multiple Files at Once
+
+# cat test > test1  -----------We can redirect standard output of a file into a new file else existing file with ‘>‘ (greater than) symbol. Careful, existing contents of test1 will be overwritten by contents of test file.
+
+# cat test test1 test2 > test3 ----------Redirecting Multiple Files Contain in a Single File
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+10.
+
+CHANGE DIRECTORY COMMANDS:(CD):
+-------------------------------
+
+# cd /home ----------to change directory.
+
+#cd  Rohith ---------to change directory which is present in  present directory
+
+#cd /usr/local/lib -----To change the directory.
+
+#cd ..    -----To change one directory back.
+
+#cd  ../../..   ------To change 3 dirs backs
+
+#cd ~   --------------Move to users home directory from anywhere.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+11.
+
+LIST FILES COMANDS :(LS)
+---------------------------
+
+# ls 
+
+#ls -a
+
+#ll
+
+#ls -la
+
+#ls -r
+
+#ls -ltr
+
+#ls -lS         ---------list with sizes
+
+#ls -lt    ----------list with modification time 
+
+#ls -lu   --------How to sort by access time
+
+#ls -lh   --------How to show file size in human readable format
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+12.
+
+MOVE COMMANDS:
+--------------
+
+#mv  file1 file2   FOLDER   ------>move files to folder
+
+#mv *rohith   folder   ------------->moving al files ending with rohith   to folder
+
+#mv -i  file1   /folder --------------move with interreptive mode 
+
+#mv -n foo.txt bar.txt  -------------To not overwrite existing file 
+
+#mv   rohith.txt    vivek.txt  --------To rename the file 
+
+#mv -b foo.txt bar.txt   -------------taking backup of existing file
+
+#mv -r or R  --------------------------move all files inside folder  
+
+#mv -f  -------------------------------move forcefully
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+13.
+
+COPY COMMANDS:
+----------------
+
+#cp /etc/passwd /mnt/backup/     ----------------To copy files to folder 
+
+#cp /etc/passwd /etc/group /etc/shadow /mnt/backup/ -------------------------To copy multiple files 
+
+#cp -i /etc/passwd /mnt/backup/   ---------------------------Copying the files interactively (-i)
+
+#cp -v /etc/fstab  /mnt/backup/  ----------------------------Verbose output during copy command (-v)
+
+#cp -iv /etc/fstab  /mnt/backup/ ---------------------------interactively (-i),Verbose.
+
+#cp -r /home/linuxtechi /mnt/backup/--------------------------r option will copy the files and directory recursively.
+
+# cp -a /home/linuxtechi /mnt/backup/ ------------------------Archive files and directory during copy (-a)
+
+#cp -i /etc/passwd /mnt/backup/  ------------------------------Do not overwrite the existing file while copying (-n)
+
+#cp -s /home/linuxtechi/file_1.txt /mnt/backup/-------------- Creating symbolic links using cp command (-s)
+
+#cp -l /home/linuxtechi/devops.txt /mnt/backup/---------------Creating Hard link using cp command (-l)
+
+# cp --backup=simple -v /home/linuxtechi/distributions.txt /mnt/backup/distributions.txt -------------------------------Creating backup of existing destination file while copying (–backup)
+
+#cp -f distributions.txt  /mnt/backup/ ------------------------------------------------------Copy the files and directory forcefully using -f option
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+14.
+
+PRINT WORKING DIRECTORY OR PRESENT WORKING DIRECTORY:
+------------------------------------------------------
+
+#pwd ---To print working directory.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+15.
+
+DATE COMMANDS:
+--------------
+
+#date  ----To know the date time 
+
+# date -d now
+
+# date -d today
+
+# date -d yesterday
+
+# date -d tomorrow
+
+# date -d sunday
+
+# date -d last-sunday
+
+#date -s "11/20/2003 12:48:00" --------------------To set date time 
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+16.
+
+ECHO COMMAND:
+-------------
+
+# echo "Hello, World!"  ---------------To Print comment
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+17.
+
+ID COMMAND :
+-------------
+
+# id   ---------To know about user ID who logged in
+
+# id -a  or id -G ----------To know user id along with assosiated  groups 
+
+#id rohith ------------------To get Specific User details
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+18.
+
+TTY COMAND:
+------------
+
+tty is short for teletype,
+
+#tty -----------------------------the output will contain name of the terminal connected to standard output
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+19.
+MEMORY COMMANDS (FREE):
+------------------------
+#free  ----------------------To Know About  Memory in Linux. 
+
+#free -h --------------------To know Memory With  Memory with Human Redable Format. 
+
+#free -m -------------------To know memory with Mega Bites.
+
+#free -k ------------------To Know memory with Kilo Bites.
+
+#free -g ------------------To know memory with Giga Bites.
+
+#free -o ------------------To know about cache memory in Bites.
+
+## free -V.
+procps version 3.2.8
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+20.
+FILE PERMISSION COMMANDS:
+--------------------------
+To change file and directory permissions
+READ:4 
+WRITE:2
+EXECUTE:1
+
+#chmod  777  file1  -----------------------To give full permissions
+
+#chmod  765  file2 -----------------------To give full permissions 
+
+
+SPECIAL PERMISSIONS:
+--------------------
+Linux Special permissions
+
+suid
+sgid
+sticky bit
+
+SUID:
+----
+The suid/setuid bit is represented by s (Octal 4).This special permission allows a
+user to access files and directories that are normally only available to the owner.
+
+admin@GeeksAlive:~$ chmod u+s sample.txt
+admin@GeeksAlive:~$ ll sample.txt
+-rwSrw-r– 1 admin admin 0 Jul 24 22:40 sample.txt
+
+SGID:
+-----
+First of all the octal digit for the sgid is 2.It is almost similar to suid,
+except that the process will have the same group rights of the file being executed.
+
+
+admin@GeeksAlive:~$ chmod g+s share
+admin@GeeksAlive:~$ ls -ld share/
+drwxrwsr-x 2 admin admin 4096 Jul 24 23:13 share/
+
+Sticky Bit(t):
+--------------
+The sticky bit is represented by t (octal -1). It is mainly used to protect files within a directory. 
+So, if a directory has the sticky bit set, a file can be deleted only by the owner of the file, the owner 
+of the directory, or by root. This is useful for publically accessible directories like /tmp.
+
+Symbolic way:
+admin@GeeksAlive:~$ chmod +t /tmp
+admin@GeeksAlive:~$ ls -ld /tmp/
+drwxrwxrwt 16 root root 4096 Jul 24 23:30 /tmp/
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+21.
+
+CHOWN COMMAND:
+--------------
+To Change Owner Ship of a file.
+
+#chown rohith  file1 -----------------To Change  user OwnerShip of a file.
+
+#chown 1000 file2    -----------------To change user id of a file
+
+#chown rohith:linuxusers file1 --------------------To change user and group ownership of a file
+
+#chown -R rohith:linuxusers RohithDirectory -------------To change user group ownership of a Directory along with inside files.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+22.
+
+LINKS COMANDS:
+--------------
+
+HARDLINK:
+---------
+
+CREATING HARDLINK:  # ln file1  file2
+
+unlink the hardlink : unlink file2
+
+SOFTLINK:
+----------
+
+CREATING SOFTLINK : # ln -s file1 file2
+
+Unlink Softlink: ulink  file2
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+23.
+
+FILTER COMMANDS:
+----------------
+
+GREP COMMANDS:(global regular expression print)
+-----------------------------------------------
+# grep word filename1 -------------------------------to grep word in a file
+
+#grep -n word  file1----------------------------------to grep word with file numbers
+
+#grep -c  word filename1-------------------------------to know the word in how many lines
+
+#grep -v word filename1--------------------------------to display every linw which having word
+
+#grep  h$  file1---------------------------------------To grep the words ending with h 
+
+#grep  ^R  file1---------------------------------------To grep the words starting with R
+
+#ls -ltr |  grep  file -------------------------------To grep given file from output of ls command
+
+
+LOCATE COMMAND:
+----------------
+
+#touch rohithfile
+
+#locate rohithfile
+
+#updatedb----------------To update local database
+
+#locate rohithfile
+
+
+HEAD:
+-----
+
+#head /etc/passwd -----------------To check top lines of file
+
+#head /etc/passwd /etc/shadow---------------To Check top lines of both  files
+
+#head -n5 /var/log/yum.log------------------To check top five lines of a file
+
+
+TAIL:
+------
+
+#tail access.log-------------------------To get last lines 
+
+#tail access.log error.log----------------To get last lines of both files
+
+#tail -5 access.log-----------------------To get last five lines
+
+#tail -n5 access.log 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+23.
+
+ARCHIVING AND COMPRESSING:
+--------------------------
+
+To Archiving the file 
+
+#tar -cvf  files.tar  file1 file2 file3 file4  --------------------------------To creating ARchiving files in to one file
+
+#tar  -xvf  files.tar 
+
+tar cvzf filename.tar.gz  /home/MyImages
+
+ZIP/UNZIP:
+---------
+Time Stamp
+(date +"%Y%m%d-%H%M%S")
+
+#gzip  files.tar
+
+#gunzip  files.tar.gz
+
+#tar -xzf  files.tar.gz --------------to extract files with out uncompressing
+
+#bzip2  files.tar
+
+#bunzip  files.tar.bz2-------------to extract files with out uncompressing
+
+#tar -xzf  files.tar.bz2
+
+#xz files.tar
+
+#unxz  files.tar.xz
+
+#tar -xjf  files.tar.xz------------------To extract files with out uncompressing
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+24.
+
+PARTITIONS:
+-----------
+
+#fdisk 
+
+#fdisk -l ------------To list the partitions
+
+#partprobe -----------Update partitions info to kernal.
+
+#parted
+
+#parted -l-----------------To list partitions
+
+
+FILESYSTEM:
+-----------
+
+TYPES OF FILESYSTEMS: XFS,EXT4,EXT3,EXT2,
+
+#mkfs.ext4  /dev/sda1   (or) mkfs -t  ext4  /dev/sda1   --------------------To assighn file system to partition.
+
+#blkid   /dev/sda1 --------------------------------------To know the file system type of a partition.
+
+#cat /etc/filesystems------------------------------------To know the valid  filesystems in a linux
+
+
+MOUNTING:
+---------
+attaching  partition to a directory
+
+1.Temporary Mounting:
+---------------------
+
+#mount  /dev/sda1   /ROHITH -------------------------------to create temporary mounting of a file system
+
+#df -h  -------To check the partition  mounted or not.
+
+2.Permanent Mounting:
+---------------------
+
+#vi /etc/fstab
+
+path         mountpoint   f.s.type  mountoptions          fsdump
+
+/dev/sda1   /ROHITH        ext4     defaults(write,read)   0-nodump,1-fs dump  (for fs check)  
+
+#df -h  or  df -hT  ----------------------------------------------------------------------------To check parttion mounted or not 
+
+
+
+UNMOUNTING:
+-----------
+TEMPPORARY UNMOUNT:
+--------------------
+#umount  /ROHITH  -----------It will detach or unmount a partition from directory.
+
+PERMANENT UNMOUNT:
+------------------
+#remove entry from fstab
+
+#vi /etc/fstab
+
+then
+
+#umount  /ROHITH
+
+
+
+TROUBLESHOTING BUSSY FILESYSTEM:
+--------------------------------
+#yum install psmisc
+
+#umount /ROHITH
+
+When it shows bussy
+
+#fuser -cu  /ROHITH    or  lsof -cu /ROHITH  ---To check which user is using this fs
+
+#fuser -ck /ROHITH  --------------To kill the users who are using that fs
+
+now try below
+
+#umount /ROHTIH
+
+
+CORRECTING FSTAB ENTRIES:
+-------------------------
+
+-If we made any wrong entry in fstab,when we reboot next time then it goes to MAINTAINENCE MODE.
+
+that time we need to give root password.Then it will login to the root account.
+
+-After entering root account then go to fstab file and do comment the entry or remove the entry.
+
+-save it.
+
+-reboot.
+
+
+FILE SYSTEM CHECK:
+------------------
+
+#e2fsck -n /dev/sda1  ------------To check fs if any corrupted blocks.
+
+#e2fsck -f /dev/sda1 -------------to repair the corrupted blocks
+
+#e2fsck -n -b  32768  /dev/sda1 -------------To check each block if it is corrupted or not
+
+#e2fsck -f -b 32768  /dev/sda1 ---------------To repair blocks
+
+#dump2fs  /dev/sda1 ---------------------------it will give you information about fs and prints super block and block group info.
+
+
+LOGICAL VOLUME MANAGER:
+-----------------------
+
+#fdisk -l
+
+#fdisk /dev/sda
+
+create 3 or 4 partitions
+
+#partprobe
+
+#pv create /dev/sda1 /dev/sda2 /dev/sda3     --------To create Physical volume
+
+#pvs or pv display ----------------------------------- to check  physical volumes
+
+#vgcreate myvg  /dev/sda1 /dev/sda2 /dev/sda3  --------To create Volume Group 
+
+#vgs or vgdisplay -------------------------------------To check volume groups. 
+
+#lvcreate  myvg -L -1G  -n MYLV  ---------------------To create Logical volume
+
+#lvdisplay or lvs 
+
+#mkfs.ext4  /dev/myvg/mylv 
+
+#mkdir /ROHITH
+
+# vi  /etc/fstab
+
+#mount -a 
+
+#df -h 
+
+
+
+To Extend Logical Volume:
+-------------------------
+
+#lvextend  /dev/myvg/mylv   -L  +500M
+
+#resize2fs   /dev/myvg/mylv
+
+#df -h
+
+
+To Reduce:
+-----------
+
+#umount /mylvm
+
+#e2fsck -f /dev//myvg/mylv
+
+#resize2fs  /dev/myvg/mylv  1000M
+
+#lvreduce  /dev/myvg/mylv  -L  1000M
+
+#mount -a
+
+#df -h
+
+
+To REMOVE:
+----------
+
+#umount  /lvm
+
+#lvremove  /dev/myvg/mylv
+
+To REMOVE VOLUME GROUP:
+-----------------------
+
+#vgremove myvg
+
+#pvremove /dev/myvg/mylv
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+25.
+
+SWAPPING  OR SWAP PARTITION:
+----------------------------
+Hardware dedicated ram
+
+#creating swap partition:
+
+#fdisk /dev/sda
+
+:n
+:enter
+:enter
+:+2G
+:t
+:L
+:82
+:W
+#partprobe
+#mkswap /dev/sda1
+#vim /etc/fstab
+
+/dev/sda1  swap swap defaults 0 0 
+
+TO ENABLE:
+----------
+#swapon -a  or  swapon  /dev/sda1 -------------->To mount the SWAP
+
+#swapon -s  or  free -m
+
+To DISABLE:
+-----------
+# vim /etc/fstab
+
+remove entry
+
+#swapoff -a  or  swapoff  /dev/sda1
+
+#free -m  -----------to check 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+26.
+
+USERMANAGEMENT:
+----------------
+
+super user-0
+system users ---1 to 999----1-200--priviledged users-----201-999 non previledged users.
+normal users-------->1000-60,000
+
+#cat /etc/login.defs ------------------file contains userid info
+
+#whoami  ----------------shows who loged inro the system
+
+#who am i ---------------who logged in and when logged into system
+
+#cat /etc/passwd  ----------to know user data 
+
+#cat /etc/shadow -----------user passwd info
+
+#getent  passwd  username  ------------------------to get info of user
+
+
+#useradd  rohith   ---------------to add user
+
+#gtent passwd rohith  ---------------to check user is created or not
+
+
+#usermod -u 1010  rohith --------------ro change userid
+
+#usermod -c  rohith is good  rohith ----------------------to change user info in /etc/passwd
+
+#usermod -d  /home/Rohith   rohith ----------------------to change home directory
+
+#usermod -s  /bin/sh  rohith  ----------------------------to change shell
+
+#usermod -g gid rohith -----------------------------------to change group id
+
+#usermod -l  rohith rohith2 ---------------------------to change username 
+
+#usermod -L  rohith  -----------------------------------to lock the user account
+
+#usermod -U rohith -------------------------------------to unlock user account
+
+
+#useradd -u 1010 -g 1010 -c rohith
+
+#userdel rohith----------------------------to delete user
+
+#userdel -r rohith ---------------------------to delete user name with home directory
+
+#chage -l rohith -----------------------------to get passwd info of a user
+
+#change rohith ---------------to change user passwd info one by one
+
+ 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+27.
+GROUP MANAGEMENT:
+-----------------
+
+GROUPS-------
+
+primary groups
+secondary groups
+
+#cat /etc/group ------------contains group info
+
+#cat /etc/gshadow-----------contains groups passwd info
+
+#gettent groupname 
+
+#groupadd linuxpeople--------------to create group
+
+#groupmod -g  1010  linuxpeople -------------to change gid
+
+#usermod  -aG  linuxpeople  rohith ---------------to add user to the group
+
+#gpasswd -M rohith vivek cnu linuxpeople   ----------add multiple users to group
+
+#gpasswd -d username groupname -----------------to remove user from group.
+
+#groupmod -n  linuxpeople linuxusers ----------------to change group name 
+
+#groupdel  linuxusers ------------------------to delete group
+
+#usermod -o -u -o rohith ---------------------------------------------create user with non unique user id
+
+#groups rohith ----------------------------------------to know user present in which groups
+
+
+SHELLS:
+---------
+
+#cat /etc/shells
+
+#chsh -s /sbin/nologin   rohith --------------To change shell
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+28.
+
+PROCESS MANAGEMENT:
+-------------------
+
+#ps ------------------------to check which process attached to the terminal
+
+#ps -au --------------------to check the process which is used by the user
+
+#ps -aux ------------------it will list the all process running ina system
+
+#ps  - aux | grep tomcat -------------------to list the process id of sepcific service
+
+#pidof  tomcat------------------------------to list the process id of specific service.
+
+#pgrep java---------------------------------to list the process id of specific service.
+
+
+
+KILLING PROCESSES:
+------------------
+
+#kill pid  -----------To kill the process.
+
+#kill -l  -------------To list all 64 signals
+
+signal 9,15 are used
+
+#kill -9 pid  ------------to kill the process
+
+#kill all -u  ------------To kill all the running processes running by the user.
+
+
+HOW TO KILL THE ZOMBIEE PROCESSES:
+----------------------------------
+
+## kill -KILL 746 29970   -------------------To kill the zombiee process
+
+#kill -s SIGCHLD pid -------------------------To kill the zombiee process
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+29.
+
+PACKAGEMANAGER:
+----------------
+
+RPM COMMANDS:
+--------------
+
+
+#rpm -qa  ------------TO check all the installed packages.
+
+#rpm -qa | grep  open-ssh---------To check open-ssh package is installed or not.
+
+#rpm -qi  open-ssh ---------------To check information about  open-ssh package.
+
+#rpm -ql  openssh ----------------To list the all files and packages related to  above package.
+
+#rpm -qc  openssh------------------To know the configuration file of the package.
+
+#To know the which package is related to linux command
+
+#which touch
+
+/usr/bin/touch
+
+#rpm -qf   /usr/bin/touch--------It will display package responsible to touch command.
+
+#rpm -ivh  redhatpackage.rpm -------To install rpm package.
+
+#rpm -Uvh  redhatpackage.rpm --------To Upgrade rpm Package.
+
+#rpm -qa  | grep openssh  --------to find package and then remove
+
+#rpm -evh  redhatpackage --------------To remove the package
+
+#rpm --checksig pidgin-2.7.9-5.el6.2.i686.rpm  -----------------------To check signature of rpm package
+
+#rpm -qpR BitTorrent-5.2.2-1-Python2.4.noarch.rpm---------------------To check dependancies of a rpm package
+
+#rpm -ivh --nodeps BitTorrent-5.2.2-1-Python2.4.noarch.rpm------------To install rpm package with out dependancies
+
+#rpm -qa --last ------------------------------------------------------To know recently installed packages
+
+## rpm -ev --nodeps vsftpd---------------------------------------------to Remove an RPM Package Without Dependencies
+
+# rpm -Va--------------------------------------------------------------To verify all rpm packages
+
+#rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6---------------------To import GPG key.
+
+#rpm -qa gpg-pubkey*----------------------------------------------------To list out all GPG imported keys.
+
+#rpm -ivh --replacepkgs GeoIP-1.5.0-11.el7.x86_64.rpm------------------To replace the rpm packages.
+
+How To rebuild Corrupted RPM Database
+Sometimes rpm database gets corrupted and stops all the functionality of rpm and other applications on the system.
+So, at the time we need to rebuild the rpm database and restore it with the help of following command.
+
+[root@tecmint]# cd /var/lib
+[root@tecmint]# rm __db*
+[root@tecmint]# rpm --rebuilddb
+[root@tecmint]# rpmdb_verify Packages
+
+
+
+YUM COMMANDS:
+-------------
+
+YUM LOCAL REPO CONFIGURATION:
+------------------------------
+
+#mkdir  RHELPACKAGES
+
+#Copy Packages from CD/DVD via WINSCP.
+
+#cd  /rhel/RHELPACKAGES/
+
+#rpm  -ivh  createrepo*   
+
+#createrepo  -v    /rhel/RHELPACKAGES/
+
+#vim /etc/yum.repos.d/rhel.repo
+
+[RHEL]
+name=yum installation
+gpgcheck=0
+enabled=1
+baseurl=file:///rhel/REDHATPACKAGES/
+
+:wq!
+  
+
+#yum  clean all -------------------------To clean yum cache
+
+#yum repolist ----------------------------To list yum repos
+
+#yum install openssh-----------------------To install openssh
+
+#yum provides /etc/selinux-----------------To know which package belongs to command
+
+
+YUM CLIENT CONFIGURATION:
+-------------------------
+
+#vi /etc/yum.repos.d/rhel.repo
+
+[RHEL]
+name=yum installation
+gpgcheck=0
+enabled=1
+baseurl=http://192.168.1.9/rhel/REDHATPACKAGES/
+
+:wq!
+
+
+
+#yum  info openssh--------------to get info of package
+
+#yum upgrade openssh--------------to upgrade package
+
+#yum downgrade openssh-------------to downgrade package
+
+#yum remove  openssh----------------to delete package
+
+#yum history-------------------------to check yum history
+
+#yum history info  transaction id--------------to check history
+
+#yum local install openssh-------------------To install package from local repo
+
+#yum search openssh--------------------------------To know which package we need to install
+
+#yum update------------------------------------------To update linux machine 
+
+# yum check-update--------------------------------------To check for updates using yum
+
+#yum update PACKAGE_NAME------------------------------To update specific package name 
+
+# yum list | less ----------------------------------To list all available packages in yum database
+
+# yum list installed | less-------------------------To list all installed packages using yum
+
+## yum provides /etc/httpd/conf/httpd.conf-------------------it will show which package is responsible for conf file
+
+# yum --enablerepo=epel install phpmyadmin---------------------install package from specific repo
+
+#yum install open-ssh    ---------------To install package
+
+#yum remove open-ssh     ---------------To uninstall package 
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+30.
+
+What is Checksum?:
+------------------
+A checksum is a small-sized datum from a block of digital data for the purpose of detecting errors which may have been introduced during its transmission or storage.
+
+hecksum is generated by checksum algorithm. Without going into technical details let’s say that it takes a file as input and outputs the checksum value of that file. There are various algorithms for generating checksum. Most popular checksum algorithms are:
+
+Secure Hash Algorithms and variants (SHA-1, SHA-2 etc.)
+MD5 Algorithm
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+31.
+
+SERVICES IN LINUX:
+------------------
+
+#systemctl  list-units  --type=service
+
+#systemctl  -at service
+
+#systemctl  start   nfs.service
+
+#systemctl  stop   nfs.service
+
+#systemctl  status   nfs.service
+
+#systemctl  restart   nfs.service
+
+#systemctl  reload   nfs.service
+
+#systemctl  mask   nfs.service-----------To disable.
+
+#systemctl  unmask   nfs.service----------To Enable.
+
+#systemctl  list-dependencies  servicename-----------------To check dependencies of a service
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+32.
+
+TARGETS:
+--------
+
+#systemctl  list-units  --type=target  --all  --------------To check available targets in a linux machine
+
+#systemctl get-default ---------------To know which target we are
+
+Graphical user target:
+----------------------
+
+#systemctl isolate graphical.target-------------------temporary setting
+
+#systemctl  set-default  graphical-user.target-------------permanent setting
+
+
+Multiuser target:
+-----------------
+#systemctl isolate multi-user.target-------------------temporary setting
+
+#systemctl  set-default  multi-user.target-------------permanent setting
+
+
+RUNLEVELS:
+-----------
+
+#runlevel 0 -------init 0 ---------------to shutdown
+
+#runlevel  1---------init 1----------------single user mode
+
+#run level 2---------init 2----------------multiuser mode with  out n/w
+
+#run level 3---------init 3-----------------multiuser mode with n/w 
+
+#run level 4----------init 4 --------------un used
+
+#run level 5------------init 5-------------GUI
+
+#run level 6------------init 6 ---------------restart
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+33.
+
+NTP SERVER : MAINTAINING ACCURATE TIME:
+----------------------------------------
+
+# timedatectl set-time hh:mm:ss   ----------------->To set the time
+
+# timedatectl---------------------------------------->to check date and time.
+
+#timedatectl list-timezones------------------------->To list time zones.
+
+#timedatedatectl  set-timezone   <time zone name>---->to change time zone.
+
+#timedatectl  set-ntp   no --------------------------->To disable NTP.
+
+#timedatectl  set-ntp  yes---------------------------->To Enable NTP
+
+#vim /etc/chrony.conf
+
+#systemctl  restart  chronyd.service
+#systemctl  enable   chronyd,service
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+34.
+SSH COMMANDS: SECURE SHELL COMMANDS:
+-------------------------------------
+
+#yum install openssh
+
+#systemctl  start sshd.service
+#systemctl  stop sshd.service
+#systemctl  restart sshd.service
+#systemctl  enable sshd.service
+#systemctl  disable sshd.service
+
+To login a Remote Machine:
+--------------------------
+
+# ssh  root@192.168.1.9
+
+#ssh hostname command-------------------To execute command in rwmote machine.
+
+#ssh -i /home/cloud-user/ENM_security_keypair.pem cloud-user@192.168.28.88-------------To login via pem file
+
+#ssh root@192.168.1.9 -p 3322-----------To login with different port number.
+
+#ssh-keygen -t rsa ---------------------To generate a key.
+
+#ssh-copy-id   root@192.168.1.9 --------To copy the ssh key  in remote servers.
+
+#/root/.ssh-----------------------------For root .ssh home directry
+
+#/home/rohith/.ssh----------------------For user home directory
+
+id_rsa  --------Private Key
+
+id_rsa.pub------Public Key
+
+#known hosts -------------------------server will store remote host entries.
+
+#Authorized_keys----------------------server will stores all keys for allowing passwd less login
+
+#ssh  -vvv  root@192.168.1.9 -------------To run ssh in debug mode
+
+
+#vim /etc/ssh/sshd_config -------------------SSH MAIN CONFIG FILE
+
+
+#systemctl restart sshd.service
+
+#systemctl enable  sshd.servcie
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+35.
+
+SCP:SECURE COPY PROTOCOL:
+-------------------------
+
+#scp  /root/rohith    root@192.168.1.9:/root/data ---------------------To copy files from one server to another server remotely
+
+#scp -v Label.pdf    root@192.168.1.9:/root/data ------------------------v will give details logs while copying 
+
+#scp -v Label.pdf    root@192.168.1.9:/root/data ------------------------v will compress  the files and will copy to remote server
+
+#scp -c 3des Label.pdf  root@192.168.1.9:/root/data ---------------------copying with different encrypt machanism to remote server
+
+#scp -P 2249 Label.pdf  root@192.168.1.9:/root/data ---------------------copying with using diff port to remote server
+
+#scp -r  Label.pdf  root@192.168.1.9:/root/data -------------------------copy files inside direcory recursivly
+
+#scp -q  Label.pdf  root@192.168.1.9:/root/data -------------------------To get warnings while copying
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+36.
+
+SFTP: SECURE FILE TRANSFER PROTOCOL:
+-------------------------------------
+
+#sftp tecmint@27.48.137.6
+
+Connecting to 27.48.137.6...
+tecmint@27.48.137.6's password:
+sftp>
+
+sftp> ?
+
+help
+
+Available commands:
+cd path                       Change remote directory to 'path'
+lcd path                      Change local directory to 'path'
+chgrp grp path                Change group of file 'path' to 'grp'
+chmod mode path               Change permissions of file 'path' to 'mode'
+chown own path                Change owner of file 'path' to 'own'
+help                          Display this help text
+get remote-path [local-path]  Download file
+lls [ls-options [path]]       Display local directory listing
+ln oldpath newpath            Symlink remote file
+lmkdir path                   Create local directory
+lpwd                          Print local working directory
+ls [path]                     Display remote directory listing
+lumask umask                  Set local umask to 'umask'
+mkdir path                    Create remote directory
+put local-path [remote-path]  Upload file
+pwd                           Display remote working directory
+exit                          Quit sftp
+quit                          Quit sftp
+rename oldpath newpath        Rename remote file
+rmdir path                    Remove remote directory
+rm path                       Delete remote file
+symlink oldpath newpath       Symlink remote file
+version                       Show SFTP version
+!command                      Execute 'command' in local shell
+!                             Escape to local shell
+?                             Synonym for help
+
+
+3. Check Present Working Directory
+
+#sftp> lpwd
+Local working directory: /
+sftp> pwd
+Remote working directory: /tecmint/
+
+
+4. Listing Files
+Listing files and directories in local as well as remote system.
+On Remote
+sftp> ls
+On Local
+sftp> lls
+
+5. Upload File
+Put single or multiple files in remote system.
+
+sftp> put local.profile
+Uploading local.profile to /tecmint/local.profile
+
+6. Upload Mutiple Files
+Putting multiple files on in remote system.
+
+sftp> mput *.xls
+
+7. Download Files
+Getting single or multiple files in local system.
+
+sftp> get SettlementReport_1-10th.xls
+Fetching /tecmint/SettlementReport_1-10th.xls to SettlementReport_1-10th.xls
+Get multiple files on a local system.
+
+sftp> mget *.xls
+
+7. Switching Directories
+Switching from one directory to another directory in local and remote locations.
+
+On Remote
+sftp> cd test
+sftp>
+On Local
+sftp> lcd Documents
+
+8. Create Directories
+Creating new directories on local and remote locations.
+
+sftp> mkdir test
+sftp> lmkdir Documents
+
+9. Remove Directories
+Remove directory or file in remote system.
+
+sftp> rm Report.xls
+sftp> rmdir sub1
+
+
+10. Exit sFTP Shell
+The ‘!‘ command drop us in local shell from where we can execute Linux commands. Type ‘exit‘ command where we can see sftp> prompt return.
+
+sftp> !
+
+[root@sftp ~]# exit
+Shell exited with status 1
+sftp>
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+37.
+FIREWALLS:
+----------
+#vi /etc/services  --------------gives all protocols and port numbers
+
+# firewall-config  
+
+#firewalld-cmd  --get-default-zone  ------------------------to check default zone
+
+#firewall-cmd   --set-default-zone=public ------------------to set default zone.
+
+#firewall-cmd   --get-services-----------------------------list the services which is added to default zone
+
+#firewall-cmd  --list-all-zones---------------------------to get all available zones
+
+#firewall-cmd  --list-all---------------------------------to get info of default zone
+
+
+TEMPORARY:
+----------
+ADD:
+----
+#firewall-cmd  --add-service=http ------------------------to add service temporary
+
+#firewall-cmd  --add-port=3260/tcp ----------------------to add port temporary
+
+#firewall-cmd  --add-port=3260/udp ----------------------to add udp port temporary
+
+REMOVE:
+-------
+#firewall-cmd  --remove-service=http ------------------------to removeservice temporary
+
+#firewall-cmd  --remove-port=3260/tcp ----------------------to remove port temporary
+
+#firewall-cmd  --remove-port=3260/udp ----------------------to add remove port temporary
+
+
+
+Permanent:
+-----------
+ADD:
+-----
+#firewall-cmd --permanent --add-service=http ----------------to add service permanent
+
+#firewall-cmd --permanent  --add-port=3260/tcp ----------------------to add port permanent
+
+#firewall-cmd --permanent  --add-port=3260/udp ----------------------to add udp port permanent
+
+
+REMOVE:
+--------
+
+#firewall-cmd --permanent --remove-service=http ----------------to remove service permanent
+
+#firewall-cmd --permanent  --remove-port=3260/tcp ----------------------to remove port permanent
+
+#firewall-cmd --permanent  --remove-port=3260/udp ----------------------to remove udp port permanent
+
+#firewall-cmd  --zone=public  --list-all  ------------------------------to list all from specific zone
+
+
+PORTS:
+------
+
+How to check if port is in use in:
+----------------------------------
+
+# netstat -tulpn | grep LISTEN
+
+# netstat -tulpn | grep  22
+
+#sudo ss -tulw   | grep 22
+
+#sudo ss -tulwn   | grep 22
+
+#sudo nmap -sTU -O 192.168.2.13    ---->> TO check the opened ports or listening ports in client.
+
+CHECKING PORT CONNECTIVITY IN LOCAL SERVER AND REMOTE SERVER WITH CURL COMMAND:
+---------------------------------------------------------------------------------
+
+CHECKING IN LOCAL SERVER:
+-------------------------
+
+#curl -v telnet://127.0.0.1:22
+
+#curl -v telnet://127.0.0.1:8080
+
+
+CHECKING IN REMOTE SERVER:
+------------------------------
+
+#curl -v telnet://192.168.1.9:22
+
+#curl -v telnet://192.168.1.9:8080
+
+#curl -I -s myapplication:5000
+
+#curl -I -s database:27017
+
+#curl -I -s https://opensource.com
+
+
+
+CONNECTING SERVER WITH SPECIFC PORTS WITH NC COMMAND:
+------------------------------------------------------
+
+
+# nc -zv -u -w 4 10.201.2.25   161  ---------------CHECK PORT CONNECT OR NOT 
+
+# nc -zv 192.168.1.15 22  ---------------------------CHECK PORT CONENCT OR NOT
+
+# nc -zv 192.168.56.10 20-80 -------------------------CHECK RANGE OF PORTS VI ANC
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+38:
+
+IPTABLES:
+---------
+On SystemD based Linux Distributions
+------------ On Cent/RHEL 7 and Fedora 22+ ------------
+
+# systemctl start iptables
+# systemctl stop iptables
+# systemctl restart iptables
+
+On SysVinit based Linux Distributions
+------------ On Cent/RHEL 6/5 and Fedora ------------
+
+# /etc/init.d/iptables start 
+# /etc/init.d/iptables stop
+# /etc/init.d/iptables restart
+
+
+
+#iptables -L -n -v   -----------------------Check all iptable rules
+
+#iptables -F    ----------------------------to flush or clear iptables
+
+#service iptables save ---------------------to save iptables
+
+Save IPtables Rules to a File
+
+# iptables-save > ~/iptables.rules
+
+Restore IPtables Rules from a File
+
+# iptables-restore < ~/iptables.rules
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+39.
+
+LOGS:
+-----
+# vi /etc/rsyslog.conf ---------------log config file
+# ls /etc/rsyslog.d/
+
+CHECKING LOGS IN LINUX :
+-------------------------
+
+# less /var/log/messages | grep  boot 
+
+# more -f /var/log/messages  | grep  mail
+
+# cat /var/log/messages   |  grep  https
+
+# tail -f /var/log/messages  | grep  ftp
+
+# grep -i error /var/log/messages  | sftp
+
+
+Common Linux log files names and usage:
+---------------------------------------
+/var/log/messages : General message and system related stuff
+/var/log/auth.log : Authenication logs
+/var/log/kern.log : Kernel logs
+/var/log/cron.log : Crond logs (cron job)
+/var/log/maillog : Mail server logs
+/var/log/qmail/ : Qmail log directory (more files inside this directory)
+/var/log/httpd/ : Apache access and error logs directory
+/var/log/lighttpd/ : Lighttpd access and error logs directory
+/var/log/boot.log : System boot log
+/var/log/mysqld.log : MySQL database server log file
+/var/log/secure or /var/log/auth.log : Authentication log
+/var/log/utmp or /var/log/wtmp : Login records file
+/var/log/yum.log : Yum command log file.
+
+
+Systemd-journal:
+----------------
+#journalctl ----------------------to get journal logs
+
+#journalctl  -u  sshd.service -----to list journal logs from perticular service
+
+#journalctl  --since  "2017-08-30  08:19:00"    --until  "2017-08-30   09:20:00"
+
+#journalctl -r -------------- to list the journals in reverse order
+
+
+HOW TO SAVE LOGS:
+-----------------
+
+# tail -l  >  jboss.log   ---------------to save logs 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+38.
+
+TCPDUMP COMMAND:
+-------------------------------
+1. Capture Packets from Specific Interface:
+
+# tcpdump -I 
+
+2. Display Available Interfaces
+
+To list number of available interfaces on the system, run the following command with -D option.
+
+# tcpdump -D
+
+3. Capture and Save Packets in a File
+
+As we said, that tcpdump has a feature to capture and save the file in a .pcap format, to do this just execute command with -w option.
+
+# tcpdump  -w  name.pcap  -I eth0
+
+4. Read Captured Packets File
+
+To read and analyze captured packet 0001.pcap file use the command with -r option, as shown below.
+
+# tcpdump -r  name.pcap
+
+5. Capture IP address Packets
+
+To capture packets for a specific interface, run the following command with option -n.
+
+# tcpdump -n -I eth0
+
+6. Capture Packet from Specific Port
+
+Let’s say you want to capture packets for specific port 22, execute the below command by specifying port number 22 as shown below.
+
+# tcpdump -I eth0 port 22
+
+7. Capture Packets from source IP
+
+To capture packets from source IP, say you want to capture packets for 192.168.0.2, use the command as follows.
+
+#tcpdump -I   eth0   8.8.8.8
+
+8. Capture Packets from destination IP
+
+To capture packets from destination IP, say you want to capture packets for 50.116.66.139, use the command as follows.
+
+# tcpdump -I   eth0   dst   8.8.8.8
+
+To check traffic is going to src ip or not:
+
+# tcpdump -i eth0 -nn  src  192.168.1.9  and port 22 
+
+#tcpdump -v  -i any  dst 172.22.100.40   and port 162
+
+REAL TIME EXAMPLES:
+---------------------
+#tcpdump -i any -B 16384 "(dst port 162) and (host 10.201.7.254)" -Uw /var/tmp/alarm_snmp.pcap
+#tcpdump -i any -B 16384 "(dst port 162) and (host 10.201.7.254)" -Uw /var/tmp/vAFG_alarm_snmp.pcap
+#tcpdump -i any -B 16384 "(dst port 162) and (host 10.201.20.4)" -Uw /var/tmp/vAFG_alarm_snmp.pcap
+#tcpdump -n -A -S -s0 -i any host 10.201.20.4
+#tcpdump -n -A -S -s0 -i any host 10.201.20.4
+#tcpdump -n -A -S -s0 -i any host 172.22.100.40
+#tcpdump -i any -B 16384 "(dst port 162) and (host 10.201.20.4)"
+#tcpdump -i any -B 16384 "(dst port 162) and (host 10.201.20.4)" -Uw /var/tmp/alarm_snmp.pcap
+#tcpdump -i any -B 16384 "(dst port 162) and (host 10.201.20.4)" #tcpdump -i any -B 16384 "(dst port 161) and (host 10.201.20.4)"
+#tcpdump -i any -B 16384 "(dst port 162) and (host 10.201.20.4)"
+#tcpdump -i any -B 16384 "(dst port 3161) and (host 10.201.20.4)"
+#tcpdump -i any -B 16384 "(host 10.201.20.4)" -Uw /var/tmp/alarm_vAFG_lvs0.pcap
+#tcpdump -i any -B 16384 "(host 10.201.20.4)" -Uw /var/tmp/alarm_vAFG_lvs_again.pcap
+#tcpdump -i any -B 16384 "(host 10.201.20.4)" -Uw /var/tmp/alarm_vAFG_lvs_again_lvs0.pcap
+#tcpdump -i any -B 16384 "(host 10.201.20.4)" -Uw /var/tmp/alarm_vAFG_lvs_again_lvs0.pcap
+#tcpdump -I   eth0   dst   10.201.12.1
+#tcpdump -I   any   dst   10.201.12.1
+#tcpdump -I  eth1  dst   10.201.12.1
+#tcpdump   eth1  dst   10.201.12.1
+#tcpdump   any  dst   10.201.12.1
+#tcpdump -i any -nn  src  10.201.12.1  and port 161
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+39.
+NETWORK TROUBLE SHOOT COMMANDS:
+---------------------------------
+To Know The Ipaddress:
+----------------------
+#ifconfig
+
+#ip a 
+
+#ip addr
+
+#ifup  eth0 ------->To up the interface 
+
+#ifdown  eth0------>To down the interface
+
+PING:
+------
+
+#ping  192.168.1.9
+
+#ping www.google.com
+
+TRACEROUTE:
+-----------
+Traceroute print the route packets take to network host
+
+Destination host or IP is mandatory parameter to use this utility
+
+#traceroute   facebook.com
+
+#traceroute   192.168.1.9
+
+
+Dig:
+------
+dig (Domain Information Groper) is a flexible tool for interrogating DNS name servers.
+
+It performs DNS lookups and displays the answers that are returned from the name servers.
+
+#dig geekflare.com
+
+#dig 192.168.1.9
+
+
+Telnet:
+--------
+telnet connect destination host:port via a telnet protocol if connection establishes means 
+connectivity between two hosts is working fine.
+
+[root@localhost ~]# telnet geekflare.com  443
+
+Trying 162.159.244.243...
+Connected to geekflare.com.
+Escape character is '^]'.
+
+
+Test Remote Ports:
+------------------
+$ telnet 192.168.5.5 25
+Trying 192.168.5.5...
+telnet: Unable to connect to remote host: Connection refused
+
+
+NSLOOKUP:
+---------
+Nslookup is a program to query Internet domain name servers.
+
+[root@localhost ~]# nslookup geekflare.com
+
+
+NETSTAT:(PORTS_CHECK):
+------------------------
+Netstat command allows you a simple way to review each of your network connections and open ports:
+
+# netstat -a | more  ------------To list all ports
+
+#netstat -at --------------------To list TCP Ports
+
+#netstat -au------------------To list all UDP ports
+
+#netstat -l-------------------Listing all LISTENING Connections
+
+#netstat -ac 5 | grep tcp -----------To list and grep all tcp ports
+
+# netstat -ap | grep http-------------- Finding Listening Programs
+
+# netstat -nap | grep http-
+
+NMAP:
+-----
+Nmap is a one of the powerful commands, which checks the opened port on the server.
+
+Usage example:
+
+#nmap $server_name
+
+#nmap  192.168.1.9
+
+#nmap  192.168.1.9  80  -------------To check port connectivity
+
+# nmap -PN 192.168.0.101 ------------To scan a host if it is protected by any packet filtering software or Firewalls.
+
+# nmap -p 80 server2.tecmint.com ------------------Scan for specific port.
+
+
+#/etc/sysconfig/network-scripts/  -------------------------contains all configuration files.
+
+#/etc/sysconfig/network-scripts/ifcfg-eth0---------------
+
+
+NMCLI COMMANDS:
+---------------
+
+#nmcli connection show --------------To show all connections in server
+
+#nmcli device status ---------------To know the connection status
+
+#nmcli device show ------------------To know complete information of device
+
+#nmcli connection up "system-eth0" ------------To bring  ethernet connection 
+
+#nmcli connection down "system-eth0"------------To bring ethernet connection down
+
+
+
+#systemctl restart  network
+
+#sytemctl  enable network
+
+STATIC IP ADDRESS:
+------------------
+
+# nmcli connection modify  system.eth0  ipv4.address  192.168.1.9/24  ------------------->ip address
+
+# nmcli connection modify system.eth0   ipv4.gateway  192.168.1 -------------------------> Gate Way
+
+# nmcli connection modify system.eth0 ipv4.dns  192.168.1.9 ----------------------------->DNS
+
+# nmcli connection modify system.eth0  ipv4.method  manual ------------------------------>To set Static
+
+
+
+#systemctl   restart      network --------------To restart Network.
+
+#systemctl    enable      network--------------------To enable Network.
+
+
+NIC TEAMING:
+-------------
+
+
+
+#nmcli connection show ----------to check available connections
+
+CREATING MASTER NIC :
+---------------------
+
+#nmcli connection add type team ipv4  10.10.10.10/8  gw4  10.10.10.1   ----------------To create a team means virtual nic
+
+#nmcli connection show  ------------to check created new virtual connection
+
+Adding NICS to TEAM:
+--------------------
+
+# nmcli connection  add type  team-slave  ifname eth01  master team   -----adding slave nic to master nic 
+
+# nmcli connection  add type  team-slave  ifname eth02  master team   -----adding slave nic to master nic 
+
+#nmcli connection team up --------to make up of master
+
+#teamdctl nm-team state   ----------------------------------To check nic teaming
+
+#RUNNING --------------------MEAN WHICH SHOULD MAINTAIN TRAFFIC  WITH A SYSTAMATIC MODE.
+
+#MAN team.conf
+
+#nmcli connection add con-name team0 type team ifname team0 \
+
+config '{"runner":{"name": "activebackup"}}'
+
+#nmcli connection modify team0 ipv4.method manual ------------>to set static ip address.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+40.
+
+SNMP WALK COMMAND:
+------------------
+
+we first need to look at how SNMP works. On SNMP-enabled devices, 
+an SNMP agent collects information from the device and stores 
+it within a Management Information Base (MIB) where this data is 
+stored so that it can be accessed whenever the SNMP manager polls 
+the SNMP agent.
+
+When the SNMP Manager queries the SNMP agent, data is taken from 
+the MIB and sent to the SNMP Manager where it can be viewed with 
+a network monitoring tool. There are many different commands that
+you can use to query an SNMP agent. The most common ways are through 
+the use of the GET or the GET-Next command. The GET command is used
+to take an Object Identifier (OID) from the MIB. The GET-Next command 
+is a little more advanced and goes through an MIB tree from OID to OID
+pulling information. This is where snmpwalk comes in.
+
+snmpwalk is the name given to an SNMP application that runs multiple
+GETNEXT requests automatically. The SNMP GETNEXT request is used to 
+query a device and take SNMP data from a device. The snmpwalk command
+is used because it allows the user to chain GETNEXT requests together
+without having to enter unique commands for each and every OID or node
+within a sub-tree.
+
+The snmpwalk is issued to the root node of the sub-tree so that information
+is gathered from every connected node. This provides you with an efficient
+way to collect information from a range of devices like routers and switches.
+The information you collect arrives in the form of OIDs. An OID is an object which
+is part of the MIB within an SNMP-enabled device.
+
+#yum install net-snmp  net-snmp-utils
+
+#cd /etc/snmp
+
+#snmpd.conf
+#snmptrapd.conf
+
+#systemctl start snmpd
+#systemctl restart snmpd
+#systemctl enable snmpd
+
+#add firewall rules for snmp for ports and services of snmp
+
+
+hostname – The SNMP agent name.
+community -The type of read community.
+object_id – Specify an object ID to return all SNMP objects below it. If NULL then the root of the SNMP objects is taken as the object_id.
+timeout – Number of microseconds before the first timeout.
+retries – How many times to retry the connection in the event of a timeout.
+-Os – Shows the last symbolic element of an OID.
+-c -Sets a community string.
+-v – Specifies the SNMP version you want to use.
+
+
+#snmpwalk -v1  -c public  192.168.1.9   ------to check snmp traffic  source to destination
+
+-v1: version
+
+-c   public=read , private=read,write
+
+above one is very week
+
+
+# snmpwalk -v1 -c public 10.10.1.224 .1.3.6.1.4.1.318  ---------checking with specific oid
+
+# snmpwalk -v1 -c public -m “./APC-POWERNET.txt” 10.10.1.224 apc   ---checking with specific mib
+
+# snmpwalk -v 2c -c public 192.168.1.9
+
+# snmpwalk -v 2c -c public localhost iso.3.6.1.2.1.1.6.0  ----checks with specific OID
+
+
+#snmpwalk -t 20  -v 2c -c public localhost iso.3.6.1.2.1.1.6.0  ----checks with specific time and oid
+
+# snmpwalk -r 1 -t 10 -v 2c -c public -M /root/ismail/ciscoMIB localhost iso.3.6.1.2.1.1.6.0  ------------------Retry Count
+
+
+#snmpwalk -v 2c -c idv90we3rnov90wer -O e  192.168.1.9:13371 --------checking with specific port 
+
+#snmpwalk  -v3 -l authNopriv -u  <user authOnlyUser> -a MD5 -A MyPassword123  192.168.1.9
+
+SNMPGET COMMAND:
+----------------
+
+The following command retrieves the value of an ICMP object (OID=56.1.1.1.1) from the host sys1:
+
+#snmpget -c public -v 2c  192.168.1.9 .1.3.6.1.2.1.56.1.1.1.1 
+56.1.1.1.1.1 = Counter32: 0
+
+#snmpget -c public -v 2c  192.168.1.9:161 .1.3.6.1.2.1.56.1.1.1.1 
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+41.
+
+SELINUX TUTORIALS:
+------------------
+ SELinux modes (Disable, Permissive and Enforcing),
+ SELinux context (user, role, type and sensitivity),
+ SELinux policy (MLS and targeted)
+ SELinux commands (setenforce, getenforce, chcon, semanage and resotrecon) in detail.
+
+ # ftp LinxuServer.com
+
+ At LinuxServer system following will happen: -
+
+A SysCall (System Call) will be generated for FTP server.
+If SELinux is disabled, SysCall will be processed normally.
+
+If SELinux is enabled, all Syscall will be processed through it.
+SELinux will log the Syscall in /var/log/audit/audit.log file.
+If SELinux enable mode is set to Permissive, Syscall will be processed normally.
+If SELinux enable mode is set to Enforcing, Syscall will be checked against the security policies and will be processed only if it has the required permission.
+Following figure illustrates this process step by step
+
+SYSCALL---->CHECK SELINUX STATUS ------->(IF DISABLE)--->ALLOW ACCESS
+
+SYSCALL---->CHECKSELINUX STATUS--------->(IF ENABLE)---->LOG ACCESS ATTEMPT IN  /VAR/LOG/AUDIT/AUDIT.LOG
+
+            CHECK  SELINUX MODE --->IF PERMISSIVE ----ALLOW ACCESS
+                                --->IF ENFORCING------CHECK SECURITY POLICY ---IF ALLOWED ---ALLOW ACCESS
+                                                                            ---IF DENIED ----TERMINATE THE REQUEST
+
+
+To view the current status (enable or disable) and current mode (disable, permissive and enforcing) of SELinux
+sestatus command
+
+#sestatus 
+#setenforce 0  ---To set permissive mode
+##sestatus   ----------
+#getenforce  ----------  To get the current status mode of selinux
+#setenforce 1 -----To set enforcing mode
+#vi /etc/sysconfig/selinux   ----------------Selinux main config file
+
+NOTE: Reboot requires for server if you made any changes
+---------------------------------------------------------
+
+# ls -lZ  ----------To know about selinux context
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+42.SED COMMANDS:
+----------------
+vi mylog
+
+this is test log
+
+:wq!
+
+
+# sed '' mylog  ---------------------------------to display the content via SED.
+# sed -e '1d' -e '2d' -e '5d' books.txt----------to remove particular lines 
+#
+
+AWK:
+----
+awk -F , -v OFS='\t' 'NR == 1 || $6 > 4 {print $2, $6}' input.txt
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+43.LOOP DEVICES
+-----------------
+Loop Devices
+Loop devices are pseudo devices available under linux commonly found under /dev/ with the name 
+of loopN where N is a number like 0,1,2,3,4 etc.
+
+#mount -o loop /ENM/artifacts/ERICenm_CXP9027091-X.X.X.iso /mnt/iso
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                                                                                                                                                                                                                                                                                                                                                                   
