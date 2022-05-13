@@ -66,3 +66,53 @@ Shell Variables − A shell variable is a special variable that is set by the sh
                   Some of these variables are environment variables whereas others are local variables.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------
+
+6. Special Variables:
+----------------------
+. $0  : The filename of the current script
+. $?  : The exit status of the last command executed
+. $$  : The process number of the current shell. For shell scripts, this is the process ID under which they are executing.
+. $!  : The process number of the last background command.
+
+Example:
+--------
+Following script uses various special variables related to the command line −
+
+#!/bin/sh
+
+echo "File Name: $0"
+echo "First Parameter : $1"
+echo "Second Parameter : $2"
+echo "Quoted Values: $@"
+echo "Quoted Values: $*"
+echo "Total Number of Parameters : $#"
+
+Here is a sample run for the above script −
+
+$./test.sh Zara Ali
+File Name : ./test.sh
+First Parameter : Zara
+Second Parameter : Ali
+Quoted Values: Zara Ali
+Quoted Values: Zara Ali
+Total Number of Parameters : 2
+
+
+7. Exit Status:
+-----------------
+. The $? variable represents the exit status of the previous command.
+. Exit status is a numerical value returned by every command upon its completion. As a rule, most commands return an exit status of 0 
+  if they were successful, and 1 if they were unsuccessful.
+  
+- Following is the example of successful command −
+
+$./test.sh Zara Ali
+File Name : ./test.sh
+First Parameter : Zara
+Second Parameter : Ali
+Quoted Values: Zara Ali
+Quoted Values: Zara Ali
+Total Number of Parameters : 2
+$echo $?
+0
+$
