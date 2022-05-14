@@ -116,3 +116,57 @@ Total Number of Parameters : 2
 $echo $?
 0
 $
+
+
+Examples:
+----------
+1.
+#!/bin/bash
+# A simple copy script
+cp $1 $2
+# Let's verify the copy worked
+echo Details for $2
+ls -lh $2
+
+2.There are a few other variables that the system sets for you to use as well.
+
+$0 - The name of the Bash script.
+$1 - $9 - The first 9 arguments to the Bash script. (As mentioned above.)
+$# - How many arguments were passed to the Bash script.
+$@ - All the arguments supplied to the Bash script.
+$? - The exit status of the most recently run process.
+$$ - The process ID of the current script.
+$USER - The username of the user running the script.
+$HOSTNAME - The hostname of the machine the script is running on.
+$SECONDS - The number of seconds since the script was started.
+$RANDOM - Returns a different random number each time is it referred to.
+$LINENO - Returns the current line number in the Bash script.
+
+3.
+!/bin/bash
+# A simple variable example
+myvariable=Hello
+anothervar=Fred
+echo $myvariable $anothervar
+echo
+sampledir=/etc
+ls $sampledir
+
+4.Command Substitution:
+------------------------
+- Command substitution allows us to take the output of a command or program (what would normally be printed to the screen) and save it as the value of a variable. To do this we place it within brackets, preceded by a $ sign.
+ex1:
+------
+myvar=$( ls /etc | wc -l )
+echo There are $myvar entries in the directory /etc
+
+ex2:
+-----
+ls
+bin Documents Desktop ...
+Downloads public_html ...
+myvar=$( ls )
+echo $myvar
+bin Documents Desktop Downloads public_html ...
+
+
