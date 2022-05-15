@@ -54,8 +54,80 @@ $ scp file.txt username@server:/remote/dir/newfilename.txt
 -----------------------------------------
 $ scp user1@server1:/dir1/file.txt user2@server2:/dir2
 
+9.Determine the operating system:
+---------------------------------
+
+# Determine the operating system that is running the script
+# - mainly care whether Cygwin
+checkOperatingSystem()
+{
+    operatingSystem="unknown"
+    os=`uname | tr [a-z] [A-Z]`
+    case "${os}" in
+        CYGWIN*)
+            operatingSystem="cygwin"
+            ;;
+        LINUX*)
+            operatingSystem="linux"
+            ;;
+        MINGW*)
+            operatingSystem="mingw"
+            ;;
+    esac
+    echo "operatingSystem=$operatingSystem (used to check for Cygwin and filemode compatibility)"
+}
 
 
+
+10.Check user running script:
+-----------------------------
+#!/bin/sh
+
+# Get the location where this script is located since it may have been run from any folder
+scriptFolder=$(cd $(dirname "$0") && pwd)
+# Script name is used in some output, use the actual script in case file was renamed
+scriptNameFromCommandLine=$(basename $0)
+
+# Call the function to make sure running as superuser
+checkSudo $scriptNameFromCommandLine
+
+# Make sure that the script is being run as as root (or sudo)
+# - pass the script name (file only) as the first function argument
+# - Running 'sudo whomami' shows "root"
+checkSudo() {
+    local user scriptName
+    scriptName = $1
+    user=`whoami`
+    if [ "$user" != "root" ]; then
+        echo ""
+        echo "You are not running as root."
+        echo "Run with:          sudo $scriptName"
+        echo "or, if necessary:  sudo ./$scriptName"
+        echo ""
+        exit 1
+    else
+        echo ""
+        echo "You are running as root or sudo.  There should be no permissions issues."
+        echo ""
+    fi
+}
+Command to do nothing
+It is sometimes useful to use a command that does nothing (like the pass command in Python). For example, such a command can be useful to write clear if statements. The following illustrates using the colon command to achieve this result:
+
+
+answer="no"
+if [ "$answer" = "no" ]; then
+    # don't do anything
+    :
+fi
+
+11.Ensure that script runs on Linux and Windows:
+------------------------------------------------
+#!/bin/sh
+(set -o igncr) 2>/dev/null && set -o igncr; # this comment is required
+# The above line ensures that the script can be run on Cygwin/Linux even with Windows CRNL
+#
+# ... rest of the script...
 
 
 
