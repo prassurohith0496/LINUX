@@ -172,6 +172,30 @@ done
 echo Bye
 
 
+---------------------------------------------------------------------------------------------------------------------------------------------------
+FUNCTIONS:
+===========
+- Functions enable you to break down the overall functionality of a script into smaller, 
+  logical subsections, which can then be called upon to perform their individual tasks when needed.
+- Using functions to perform repetitive tasks is an excellent way to create code reuse.
+
+Syntax:
+--------
+function_name () { 
+   list of commands
+}
+
+Example:
+--------
+#!/bin/sh
+
+# Define your function here
+Hello () {
+   echo "Hello World"
+}
+
+# Invoke your function
+Hello
 
 
 
