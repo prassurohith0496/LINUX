@@ -1,1 +1,76 @@
+USEFULL SHELL SCRIPTS:
+========================
+
+1. Search for Files Recursively To Find an Expression:
+-------------------------------------------------------
+
+$ find . -type f -exec grep -l "nltk" {} \;
+
+2. Print the Elapsed Time of Code Execution:
+--------------------------------------------
+#!/bin/bash
+start_time=$(date +%s)
+# your code here
+end_time=$(date +%s)
+echo "Time elapsed: $(($end_time - $start_time)) seconds"
+
+
+3. Search and Replace Strings in Files:
+---------------------------------------
+- This command will replace strings equal to localhost:8000 with localhost:8080 in all files:
+
+$ find . -type f -exec grep -l "localhost:8000" {} \; | xargs sed -i 's/localhost:8000/localhost:8080/g'
+
+
+4. Delete Specific Files:
+----------------------------
+- This command deletes all empty files ending with .log:
+$ find . -type f -name "*.log" -exec rm {} \;
+
+- To delete all files older than 25 days, run this command:
+$ find . -type f -mtime +25 -exec rm {} \;
+
+
+5. Execute Command on Each File if a Condition Is Met:
+-------------------------------------------------------
+for file in *; do
+    if [[ $file =~ ^[a-zA-Z] ]]; then
+        # execute command on the file
+        echo $file
+    fi
+done
+
+6. Download Files From a Remote Server:
+-----------------------------------------
+$ scp username@server:path/to/file destination_path
+
+
+7. Upload Files to a Remote Server:
+------------------------------------
+$ scp -r /local/dir username@server:/remote/dir
+$ scp file.txt username@server:/remote/dir/newfilename.txt
+
+8. Copy Files Between Two Remote Servers:
+-----------------------------------------
+$ scp user1@server1:/dir1/file.txt user2@server2:/dir2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
