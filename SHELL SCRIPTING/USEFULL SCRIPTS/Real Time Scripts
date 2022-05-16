@@ -58,6 +58,16 @@ if [ $? -eq 0 ]
 fi
 
 
+7.Copy files to Remote Hosts:
+------------------------------
+#!/bin/bash
+dir1=/home/rohith
+
+for i in $dir1
+do
+ scp somefile $i:/tmp
+done
+
 
 
 
