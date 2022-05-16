@@ -27,8 +27,17 @@ done
 34 20 * * * /home/rohith/ping-script-all | mail -s "connectivity Status"  rohith@gmail.com
 
 
+4.Delete old files:
+---------------------
+#!/bin/bash
 
+find /home/rohith/  -mtime +90 -exec rm {} \;
 
+5. rename olf files.
+---------------------
+#!/bin/bash
+
+find /home/rohith/  -mtime +90 -exec mv {}  {}.old  \;
 
 
 
