@@ -39,7 +39,23 @@ find /home/rohith/  -mtime +90 -exec rm {} \;
 
 find /home/rohith/  -mtime +90 -exec mv {}  {}.old  \;
 
+6.File Sysytem Backup
+----------------------
+#!/bin/bash
 
+tar cvf /tmp/backup.tar  /etc/var
+gzip backup.tar
+find backup.tar.gz -mtime -l -type f -print &> /dev/null
+
+if [ $? -eq 0 ]
+     then
+     echo Backup was created
+     echo
+     echo Archiving Backup
+     scp /tmp/backup.tar.gz  root@192.168.1.1:/path
+     else
+     echo backup failed
+fi
 
 
 
