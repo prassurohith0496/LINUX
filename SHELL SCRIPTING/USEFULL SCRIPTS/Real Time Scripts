@@ -18,3 +18,23 @@ ping -c1 $ip &> /dev/null
       echo $ip is Not ok
       fi
 done
+
+
+3.Script Schedules and send notifications:
+------------------------------------------
+#!/bin/bash
+
+34 20 * * * /home/rohith/ping-script-all | mail -s "connectivity Status"  rohith@gmail.com
+
+
+
+
+
+
+
+
+
+
+
+
+
