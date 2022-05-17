@@ -1,0 +1,161 @@
+
+ALL IMPORTANT LINUX COMMANDS:
+-------------------------------
+1.TO KNOW ABOUT LINUX & DEVICES IN A LINUX SERVER:
+-----------------------------------------------------
+# cat /etc/os-release
+# lsb_release -a
+# uname -r 
+# hostnamectl
+# cat /proc/version
+# cat /etc/issue
+# systemd-analyze ------------------------>To know how much time system takes to boot.
+# sytemd-analyze   blame ----------------->To know how much time it takes to boot for each and every process.
+# uptime  -------------------------------->In Linux uptime command shows since how long your system is running and the number of users are currently logged in and also displays load average for 1,5 and 15 minutes intervals.
+# uptime -V------------------------------->check with time
+
+
+2.Find out whether your system is a physical or virtual machine:
+--------------------------------------------------------------
+# sudo dmidecode -s system-manufacturer
+if it is a physical system, you will get an output something like below.
+# Dell Inc.
+If it is virtual system, you will get the following outputs:
+# innotek GmbH
+
+3.To View Linux System HW Info:
+--------------------------------
+To Know about Sytem Hardware:
+
+# dmidecode 
+# dmidecode -t memory
+# dmidecode -t system
+# dmidecode -t bios
+# dmidecode -t processor
+
+# sudo lshw                       ## print information about your Linux system hardware
+# sudo lshw                       ## print information about your Linux system hardware  short output
+# sudo lshw -html > lshw.html     ## save o/p of HW info to a html format.
+
+# lscpu                           ## To get cpuinfo
+# lsblk  or lsblk -a              ## To get Block Device Info.
+# lsusb                           ## To get usb info.
+# lspci                           ## To get pci device info.
+
+# yum install lsscsi              ## to get scsi sata disk info.
+# lsscsi
+# lsscsi -s                       ## sata disks with sizes.
+# hdparm /dev/sda1                ## to get info of hdd
+# hdparm -g /dev/sda1
+
+
+4.Disk Space Usage Commands:
+---------------------------------
+
+# df
+# df -i 
+# df -a
+# df -h
+# df -hT  /home
+# df -k
+# df -m
+# df -T
+
+
+5. Disk Usage Commands:
+-------------------------
+
+# du  /home/tecmint
+# du -h /home/tecmint
+# du -sh /home/tecmint
+# du -a /home/tecmint
+# du -m /home/tecmint
+# du -k /home/tecmint
+# du -ah --exclude="*.txt" /home/tecmint
+
+How to Find Out Top Directories and Files (Disk Space) in Linux:
+-----------------------------------------------------------------
+# find -type f -exec du -Sh {} + | sort -rh | head -n 5                                        ## find biggest file sizes only
+# find /home/tecmint/Downloads/ -type f -exec du -Sh {} + | sort -rh | head -n 5               ## find biggest files sizes in a particular directory.
+  OR
+# find /home/tecmint/Downloads/ -type f -printf "%s %p\n" | sort -rn | head -n 5
+
+# du -a /home | sort -n -r | head -n 5                                                         ## Biggest files & Directories find out  includes subdirectories.
+# du -a | sort -n -r | head -n 5                                                               ## Biggest Directories find out 
+# du -hs * | sort -rh | head -5                                                                ## human readable format
+
+
+6. Disk ionode Increase:
+-----------------------------
+# df -i
+# sudo mkfs.ext4 -i 16400 /dev/sdc1                  ## craete file system with ionodes.
+
+
+7. Hard Disk Health Check:
+------------------------------
+# lsblk                          ## find HDD
+# umount /dev/sdb                ## unmount HDD
+# smartctl -H /dev/sdb           ## To check hdd Health check status
+# fsck /dev/sdb                  ## Check for filesystem consistency
+# badblocks -v /dev/sdb          ## Check for disk bad blocks or bad sector
+
+
+8.Find out Hardware issues in linux:
+--------------------------------------
+# lsblk                                   # find list of hdd installed in ur system.
+# systemctl status                        # systemd is the most popular init process for bootstrapping user spaces and controlling multiple system processes
+# dmesg | more                            # Dmesg allows you to figure out errors and warnings in the kernel's latest messages.
+# tail -f /var/log/messages
+
+
+9.History Commands:
+---------------------
+exp:1:
+
+# history
+
+1  clear
+2  ls -al
+3  sudo dnf update -y
+4  history
+
+# !3                           ## To rerun 3rd command.
+
+exp: 2:
+# history
+# history | grep dnf
+# history | tail -n 3
+
+exp:3:
+
+# Reverse search of history.
+
+# Ctrl + R: to invoke a recursive search of your command history
+
+# Now you can start typing a command, and matching commands will be displayed for you to execute by pressing Return or Enter.
+
+
+
+10. LOGS:
+----------
+Logs to Troubleshoot Linux Machine:
+------------------------------------
+# /var/log/messages                                  ## This is the first log wer ur going to check to resolve issues.
+
+# /var/log/secure                                    ## Authentification & Authouization logs.
+
+# /var/log/boot.log                                  ## Boot Logs.
+
+# /var/log/kern.log                                  ## Kernal Logs.
+
+# /var/log/faillog                                   ## For failed logins.
+
+# /var/log/cron                                      ## For cron logs.
+
+# /var/log/mail.log                                  ## for mail logs.
+
+# /var/log/httpd/                                    ## Apache logs
+
+# /var/log/mysqld.log                                ## mysql logs.
+
+
